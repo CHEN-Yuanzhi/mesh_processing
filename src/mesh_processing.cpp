@@ -114,7 +114,7 @@ MeshProcessing::MeshProcessing(QWidget *parent) : QMainWindow(parent) {
 }
 
 void MeshProcessing::OnOpenFile() {
-	QStringList file_paths = QFileDialog::getOpenFileNames(this, QString::fromLocal8Bit("打开文件"), "./objs/", tr("OBJ files(*.obj);; OFF files(*.off);; STL files(*.stl)"));
+	QStringList file_paths = QFileDialog::getOpenFileNames(this, QString::fromLocal8Bit("??募?"), "./objs/", tr("OBJ files(*.obj);; OFF files(*.off);; STL files(*.stl)"));
 	if (file_paths.size() == 0) return;
 
 	this->default_mode_action_->setEnabled(false);
@@ -213,18 +213,18 @@ void MeshProcessing::OnOpenFile() {
 
 void MeshProcessing::OnReadColorTable() {
 	if (this->mesh_processing_data_model_->mesh_vec_.size() != 1) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("请检查目前读入的网格数是否为1！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("???目前?????????????1??"));
 		return;
 	}
 
 	this->color_table_handler_ = new ColorTableHandler;
-	QString file_path = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("打开文件"), "./", tr("txt Files(*.txt)"));
+	QString file_path = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("??募?"), "./", tr("txt Files(*.txt)"));
 	if (file_path.size() == 0) return;
 
 	this->color_table_handler_->setColorTableName(file_path);
 	this->color_table_handler_->setMesh(this->mesh_processing_data_model_->mesh_vec_[0]);
 	if (this->color_table_handler_->read() == false) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("请检查颜色表文件是否正确！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("????色??募?????确??"));
 		return;
 	}
 
@@ -232,22 +232,22 @@ void MeshProcessing::OnReadColorTable() {
 	this->discrete_mode_action_->setEnabled(true);
 	this->continuous_mode_action_->setEnabled(true);
 
-	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("颜色表读取完毕！请选择着色模式！"));
+	QMessageBox::information(this, QString::fromLocal8Bit("?示"), QString::fromLocal8Bit("?色???取??希??选??色模式??"));
 }
 
 void MeshProcessing::OnWriteColorTable() {
 	if (this->color_table_handler_ == nullptr) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("当前没有颜色表！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("??前没??色???"));
 		return;
 	}
 
-	QString file_path = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("保存文件"), "", tr("txt Files(*.txt)"));
+	QString file_path = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("????募?"), "", tr("txt Files(*.txt)"));
 	if (file_path.size() == 0) return;
 
 	this->color_table_handler_->setColorTableName(file_path);
 	this->color_table_handler_->write();
 
-	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("颜色表导出完毕！"));
+	QMessageBox::information(this, QString::fromLocal8Bit("?示"), QString::fromLocal8Bit("?色???????希?"));
 }
 
 void MeshProcessing::OnWireframeMode() {
@@ -293,7 +293,7 @@ void MeshProcessing::OnMultiVertexMode() {
 void MeshProcessing::OnDisplayNormal() {
 	if (this->mesh_processing_data_model_->pick_mode_ != MeshProcessingDataModel::FACE ||
 		this->mesh_processing_data_model_->selected_face_id_ == -1) {
-		QMessageBox::warning(this, QString::fromLocal8Bit("警告"), QString::fromLocal8Bit("请在面拾取模式中选取一个面片！"));
+		QMessageBox::warning(this, QString::fromLocal8Bit("????), QString::fromLocal8Bit("???拾取模式?选取一???片??"));
 		return;
 	}
 
@@ -348,7 +348,7 @@ void MeshProcessing::OnDefaultMode() {
 
 void MeshProcessing::OnDiscreteMode() {
 	if (this->mesh_processing_data_model_->actor_vec_.size() != 1) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("请检查目前读入的网格数是否为1！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("???目前?????????????1??"));
 		return;
 	}
 
@@ -380,7 +380,7 @@ void MeshProcessing::OnDiscreteMode() {
 
 void MeshProcessing::OnContinuousMode() {
 	if (this->mesh_processing_data_model_->actor_vec_.size() != 1) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("请检查目前读入的网格数是否为1！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("???目前?????????????1??"));
 		return;
 	}
 
@@ -414,7 +414,7 @@ void MeshProcessing::OnICPRegistration() {
 	}
 
 	if (active_ids.size() != 2) {
-		QMessageBox::warning(this, QString::fromLocal8Bit("警告"), QString::fromLocal8Bit("请检查目前选中的网格数是否为2！"));
+		QMessageBox::warning(this, QString::fromLocal8Bit("????), QString::fromLocal8Bit("???目前选???????????2??"));
 		return;
 	}
 
@@ -437,7 +437,7 @@ void MeshProcessing::OnICPRegistration() {
 
 void MeshProcessing::OnSegment() {
 	if (this->mesh_processing_data_model_->mesh_vec_.size() != 1) {
-		QMessageBox::critical(this, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("请检查目前读入的网格数是否为1！"));
+		QMessageBox::critical(this, QString::fromLocal8Bit("???), QString::fromLocal8Bit("???目前?????????????1??"));
 		return;
 	}
 
